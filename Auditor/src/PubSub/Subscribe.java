@@ -1,25 +1,21 @@
-package PubSub; /**
- * Created by Julius Myszkowski on 8/05/2015.
+package PubSub;
+
+/**
+ * Created by Julius Myszkowski on 11/05/2015.
  * Subject: ${subjectCode} - ${subjectTitle}
  * University of Newcastle
  * Student Number: c3155112
  * email: c3155112@uon.edu.au, julius.skye@gmail.com
  */
-
 import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.util.Properties;
 
-public class Publish
+public class Subscribe implements MessageListener
 {
-    private static int publishCounter = 0;
 
-    public Publish(String[] content){
-        connectAndSend(content);
-    }
-
-    public void connectAndSend(String[] content)
+    public void go()
     {
         try
         {
@@ -31,19 +27,32 @@ public class Publish
 
             TopicConnection tconnection = tfactory.createTopicConnection();
             TopicSession tsession = tconnection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
-            TopicPublisher publisher = tsession.createPublisher((Topic)context.lookup("jms/seng4400ass2PS"));
+            TopicSubscriber subscriber = tsession.createSubscriber((Topic)context.lookup("jms/seng4400ass2PS"));
 
-            TextMessage message = tsession.createTextMessage();
-            message.setText(content[0]);
-            publisher.publish(message);
-            System.out.println("Client logged in as: " + content[0] + "with password" + content[1]);
+            subscriber.setMessageListener(this);
 
-            context.close();
-            tconnection.close();
+            tconnection.start();
+
+            while (true) {}
         }
         catch (Exception e)
         {
             e.printStackTrace();
+        }
+    }
+
+    public void onMessage(Message message)
+    {
+        if(message instanceof TextMessage)
+        {
+            try
+            {
+                System.out.println( "Auditor received message: " + ((TextMessage)message).getText());
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }
