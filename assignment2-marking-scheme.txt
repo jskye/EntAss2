@@ -1,0 +1,15 @@
+Marking scheme for Seng4400 Assignment 2
+
+Total Marks Available: 20
+
+WAR 1 (customer management system)
+	1 point for deployable WAR	2 point for working JSP/servlet	2 point for JMS publish	2 point for WS client
+
+WAR 2 (admin console)
+	1 point for deployable WAR	2 point for working JSP/servlet	2 point for JMS subscribe	1 point for startup logic
+
+WAR 3 (billing system)
+	1 point for deployable WAR	2 point for WS server
+
+Documentation
+	2 point for system diagram	2 point for description
