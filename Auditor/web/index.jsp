@@ -8,12 +8,13 @@
  */
 -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<% System.out.print("in index.jsp");%>--%>
 <html>
   <head>
-    <title>Login</title>
+    <title>Auditor Console</title>
   </head>
   <body>
-  login
+  Load
 
   </body>
 </html>
