@@ -12,13 +12,16 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.util.Properties;
 
-public class Subscribe implements MessageListener
+public class Subscriber implements MessageListener
 {
+
+    LoginEventListBean leb;
 
     public void go()
     {
         try
         {
+            leb = new LoginEventListBean();
             Properties props = new Properties();
             props.put(Context.PROVIDER_URL,"iiop://127.0.0.1:3700");
 
@@ -33,7 +36,7 @@ public class Subscribe implements MessageListener
 
             tconnection.start();
 
-            while (true) {}
+//            while (true) {}
         }
         catch (Exception e)
         {
@@ -48,6 +51,12 @@ public class Subscribe implements MessageListener
             try
             {
                 System.out.println( "Auditor received message: " + ((TextMessage)message).getText());
+                SimpleLoginEventBean seb = new SimpleLoginEventBean();
+                String textSent = ((TextMessage)message).getText();
+                seb.setLoginSuccess(textSent);
+                leb.add(seb);
+
+
             }
             catch(Exception e)
             {
