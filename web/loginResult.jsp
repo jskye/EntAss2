@@ -14,7 +14,7 @@
 we are assuming invalid input events are still required to be logged.
 -->
 
-<%@ page import="PubSub.Publish" %>
+<%@ page import="PubSub.Publisher" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -96,7 +96,7 @@ we are assuming invalid input events are still required to be logged.
                         post[1] = password;
                         post[2] = "12pm";
                         post[3] = loginResult;
-                        Publish publisher = new Publish(post);
+                        Publisher publisher = new Publisher(post);
 
                 }
 

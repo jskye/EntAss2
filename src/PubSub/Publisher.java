@@ -11,11 +11,18 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import java.util.Properties;
 
-public class Publish
+public class Publisher
 {
     private static int publishCounter = 0;
 
-    public Publish(String[] content){
+//    @Resource(mappedName="jms/ConnectionFactory")
+    private TopicConnectionFactory tfactory;
+
+//    @Resource(mappedName="jms/Topic")
+    private Topic topic;
+
+
+    public Publisher(String[] content){
         connectAndSend(content);
     }
 
@@ -27,11 +34,15 @@ public class Publish
             props.put(Context.PROVIDER_URL,"iiop://127.0.0.1:3700");
 
             Context context = new InitialContext(props);
-            TopicConnectionFactory tfactory = (TopicConnectionFactory) context.lookup("jms/myConnectionFactory");
+            tfactory = (TopicConnectionFactory) context.lookup("jms/myConnectionFactory");
 
             TopicConnection tconnection = tfactory.createTopicConnection();
             TopicSession tsession = tconnection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
-            TopicPublisher publisher = tsession.createPublisher((Topic)context.lookup("jms/seng4400ass2PS"));
+
+            // get topic from server
+            topic = (Topic)context.lookup("jms/seng4400ass2PS");
+
+            TopicPublisher publisher = tsession.createPublisher(topic);
 
             TextMessage message = tsession.createTextMessage();
             message.setText(content[0]);
