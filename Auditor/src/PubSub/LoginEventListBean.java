@@ -1,6 +1,7 @@
 package PubSub;
 
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
@@ -11,10 +12,10 @@ import java.util.concurrent.ArrayBlockingQueue;
  * email: c3155112@uon.edu.au, julius.skye@gmail.com
  */
 
-//@SessionScoped
+
 public class LoginEventListBean implements Serializable {
 
-    private ArrayBlockingQueue<SimpleLoginEventBean> loginEventList = new ArrayBlockingQueue<SimpleLoginEventBean>(50, true);
+    private static ArrayBlockingQueue<SimpleLoginEventBean> loginEventList = new ArrayBlockingQueue<SimpleLoginEventBean>(50, true);
 
     // empty constructor
     public LoginEventListBean(){}
@@ -35,11 +36,36 @@ public class LoginEventListBean implements Serializable {
         }
         else {
             System.out.println("printing event list");
-            return loginEventList.toString();
+            System.out.println(loginEventList.peek().toString());
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.append("<br>");
+
+            // iterate over list and return elements as strings
+//            for(SimpleLoginEventBean seb : loginEventList){
+//                listString.concat(seb.toString());
+//                listString.concat("<br>");
+//            }
+
+            for(Iterator<SimpleLoginEventBean> i = loginEventList.iterator(); i.hasNext(); ) {
+                SimpleLoginEventBean seb = i.next();
+//                System.out.println(seb.getLoginSuccess());
+                sb.append(seb.getLoginSuccess());
+                sb.append("<br>");
+
+
+            }
+
+            return sb.toString();
         }
     }
 
-    public synchronized void add(SimpleLoginEventBean t){
+//    public void init(){
+//
+//    }
+
+    public void add(SimpleLoginEventBean t){
         if(loginEventList.size() == 50){
             loginEventList.poll();
             System.out.println("list is full, removed old bean");

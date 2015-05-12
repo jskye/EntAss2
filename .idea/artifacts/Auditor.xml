@@ -9,6 +9,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="javax.jms-api.jar-2.0" />
+          <element id="library" level="application_server_libraries" name="GlassFish 4.1.0 - JMS: Java Message Service" />
         </element>
       </element>
     </root>

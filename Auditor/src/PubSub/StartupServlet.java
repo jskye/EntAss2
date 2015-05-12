@@ -33,10 +33,7 @@ public class StartupServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("initialising subscriber.");
-        subscriber = new Subscriber();
-        subscriber.go();
-        System.out.println("subscriber initialised and listening for events.");
+
 
         String url = request.getContextPath() + "/index.jsp";
         System.out.println(url);
@@ -55,6 +52,10 @@ public class StartupServlet extends HttpServlet {
 
     public void init(ServletConfig servletConfig) throws ServletException {
 
+        System.out.println("initialising subscriber.");
+        subscriber = new Subscriber();
+        subscriber.go();
+        System.out.println("subscriber initialised and listening for events.");
     }
 
     // for non-http requests

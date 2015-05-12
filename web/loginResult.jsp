@@ -96,7 +96,18 @@ we are assuming invalid input events are still required to be logged.
                         post[1] = password;
                         post[2] = "12pm";
                         post[3] = loginResult;
-                        Publisher publisher = new Publisher(post);
+                        String postString = post[0]+ " "+post[1]+" "+post[2]+" "+post[3];
+                        //TODO send full string or object and split at other end
+
+
+                        //send just result for now
+                        Publisher publisher = new Publisher();
+                        publisher.sendMessage(post[3]);
+
+                        //send 10 copies per message
+                        //publisher.sendMessage(post[3], 10);
+
+
 
                 }
 

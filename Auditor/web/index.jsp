@@ -8,8 +8,6 @@
  */
 -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%--<% System.out.print("in index.jsp");%>--%>
 <html>
   <head>
     <title>Auditor Console</title>
@@ -17,12 +15,13 @@
   <body>
 
 
-    <jsp:useBean id="LoginEventListBean" class="PubSub.LoginEventListBean" scope="session"/>
+    <jsp:useBean id="LoginEventListBean" class="PubSub.LoginEventListBean" scope="application">
+           <jsp:getProperty name="LoginEventListBean" property="loginEventList"/>
+    </jsp:useBean>
 
+    ${LoginEventListBean.toString()}
 
-        ${LoginEventListBean.toString()}
-
- <!--TODO: iterate over list-->
+ <!--TODO: iterate over list -->
 
   </body>
 </html>

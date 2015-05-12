@@ -1,5 +1,7 @@
 package PubSub;
 
+import java.io.Serializable;
+
 /**
  * Created by Julius Myszkowski on 12/05/2015.
  * Subject: ${subjectCode} - ${subjectTitle}
@@ -7,10 +9,11 @@ package PubSub;
  * Student Number: c3155112
  * email: c3155112@uon.edu.au, julius.skye@gmail.com
  */
-public class SimpleLoginEventBean {
+public class SimpleLoginEventBean implements Serializable {
 
 
     private String loginSuccess;
+//    private String toString;
 
     public SimpleLoginEventBean(){}
 
@@ -22,8 +25,8 @@ public class SimpleLoginEventBean {
         this.loginSuccess = loginSuccess;
     }
 
-    public String toString(){
-        return getLoginSuccess();
-    }
+//    public String getToString(){
+//        return getLoginSuccess();
+//    }
 
 }
