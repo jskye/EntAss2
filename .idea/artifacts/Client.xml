@@ -6,6 +6,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Ass2" />
+          <element id="module-output" name="Payments" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="application" name="gf-client" />

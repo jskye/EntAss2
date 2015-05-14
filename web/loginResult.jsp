@@ -8,13 +8,11 @@
 -->
 
 <!--
-
-
-
 we are assuming invalid input events are still required to be logged.
 -->
 
 <%@ page import="PubSub.Publisher" %>
+<%@ page import="sun.security.util.Password" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
@@ -78,6 +76,7 @@ we are assuming invalid input events are still required to be logged.
                         out.println("Welcome " + username + "<br>");
                         loginCount++;
                         out.println("Congratulations, you've logged in " + loginCount + " times"
+                        + "<br>"+ "<a href=\"payments.jsp\">go to payments</a>"
                         + "<br>"+"<a href=\"loginResult.jsp?doLogout=true\">Logout?</a>");
 
                         // pass as a string
