@@ -10,6 +10,7 @@
           <element id="library" level="application_server_libraries" name="GlassFish 4.1.0" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Payments/web/Web" />
     </root>
   </artifact>
 </component>

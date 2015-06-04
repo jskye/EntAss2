@@ -13,20 +13,20 @@ import java.net.URL;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "PaymentWS", targetNamespace = "http://PaymentWebService", wsdlLocation = "file:///Users/juliusskye/ENT/EntAss2Backend/src/PaymentWebService/PaymentWS.wsdl")
+@WebServiceClient(name = "PaymentWS", targetNamespace = "http://PaymentWebService/", wsdlLocation = "http://localhost:8081/PaymentWebService/services/PaymentWS?wsdl")
 public class PaymentWS_Service
     extends Service
 {
 
     private final static URL PAYMENTWS_WSDL_LOCATION;
     private final static WebServiceException PAYMENTWS_EXCEPTION;
-    private final static QName PAYMENTWS_QNAME = new QName("http://PaymentWebService", "PaymentWS");
+    private final static QName PAYMENTWS_QNAME = new QName("http://PaymentWebService/", "PaymentWSService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:///Users/juliusskye/ENT/EntAss2Backend/src/PaymentWebService/PaymentWS.wsdl");
+            url = new URL("http://localhost:8081/PaymentWebService/services/PaymentWS?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -63,9 +63,9 @@ public class PaymentWS_Service
      * @return
      *     returns PaymentWS
      */
-    @WebEndpoint(name = "PaymentWS")
+    @WebEndpoint(name = "PaymentWSPort")
     public PaymentWS getPaymentWS() {
-        return super.getPort(new QName("http://PaymentWebService", "PaymentWS"), PaymentWS.class);
+        return super.getPort(new QName("http://PaymentWebService/", "PaymentWSPort"), PaymentWS.class);
     }
 
     /**
@@ -75,9 +75,9 @@ public class PaymentWS_Service
      * @return
      *     returns PaymentWS
      */
-    @WebEndpoint(name = "PaymentWS")
+    @WebEndpoint(name = "PaymentWSPort")
     public PaymentWS getPaymentWS(WebServiceFeature... features) {
-        return super.getPort(new QName("http://PaymentWebService", "PaymentWS"), PaymentWS.class, features);
+        return super.getPort(new QName("http://PaymentWebService/", "PaymentWSPort"), PaymentWS.class, features);
     }
 
     private static URL __getWsdlLocation() {
